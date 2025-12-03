@@ -6,15 +6,15 @@ import { TicketsService } from '../../services/tickets';
 @Component({
   selector: 'app-create-ticket',
   standalone: true,
-  imports: [],
-  template: ''
+  templateUrl: './create-ticket.html',
+  imports: [TicketFormComponent]
 })
 export class CreateTicketComponent {
 
   constructor(
     private ticketsService: TicketsService,
     private router: Router
-  ) {}
+  ) { }
 
   create(data: any) {
     this.ticketsService.create(data).subscribe(() => {
