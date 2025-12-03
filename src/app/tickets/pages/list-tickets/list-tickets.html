@@ -1,0 +1,10 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Tickets</h2>
+        <a routerLink="/tickets/new" class="btn btn-success">Nuevo Ticket</a>
+    </div>
+    @for (t of tickets$ | async; track t.id) {
+        <app-ticket-item [ticket]="t">
+        </app-ticket-item>
+    }
+</div>

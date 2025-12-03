@@ -1,0 +1,27 @@
+<div class="container mt-4">
+
+  <h2 class="mb-4">Editar Ticket</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado</label>
+      <select
+        id="estado"
+        class="form-select"
+        formControlName="estado"
+        [ngClass]="{'is-invalid': form.get('estado')?.invalid && form.get('estado')?.touched}">
+        <option value="OPEN">Open</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="CLOSED">Closed</option>
+      </select>
+      <div class="invalid-feedback">
+        Debes seleccionar un estado válido.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+  </form>
+</div>
+

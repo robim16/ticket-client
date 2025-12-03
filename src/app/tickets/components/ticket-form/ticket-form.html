@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-3">
+
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <textarea
+      id="descripcion"
+      formControlName="descripcion"
+      class="form-control"
+      [ngClass]="{'is-invalid': form.get('descripcion')?.invalid && form.get('descripcion')?.touched}"
+      placeholder="Escribe la descripción del ticket"
+      rows="4">
+    </textarea>
+    <div class="invalid-feedback">
+      La descripción es obligatoria.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear Ticket</button>
+
+</form>
+
