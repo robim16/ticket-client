@@ -1,1 +1,42 @@
-<p>register-form works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-3">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">name</label>
+        <input id="name" formControlName="name" type="text" class="form-control"
+            [ngClass]="{'is-invalid': form.get('name')?.invalid && form.get('name')?.touched}"
+            placeholder="Escribe el nombre">
+        <div class="invalid-feedback">
+            El nombre es obligatorio.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">username</label>
+        <input id="username" formControlName="username" type="text" class="form-control"
+            [ngClass]="{'is-invalid': form.get('username')?.invalid && form.get('username')?.touched}"
+            placeholder="Escribe el username">
+        <div class="invalid-feedback">
+            El username es obligatorio.
+        </div>
+    </div>
+     <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control"
+            [ngClass]="{'is-invalid': form.get('email')?.invalid && form.get('email')?.touched}"
+            placeholder="Escribe el email">
+        <div class="invalid-feedback">
+            El email es obligatorio.
+        </div>
+    </div>
+     <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" formControlName="password" type="password" class="form-control"
+            [ngClass]="{'is-invalid': form.get('password')?.invalid && form.get('password')?.touched}"
+            placeholder="Escribe el password">
+        <div class="invalid-feedback">
+            El password es obligatorio.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registro</button>
+
+</form>
