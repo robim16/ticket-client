@@ -9,10 +9,12 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   private tokenKey = 'authToken';
 
+   private baseUrl = 'http://localhost:3001/api/auth'; 
+
   constructor(private http: HttpClient) { }
 
   login(credentials: any): Observable<any> {
-    return this.http.post<any>('YOUR_API_LOGIN_URL', credentials).pipe(
+    return this.http.post<any>(`${this.baseUrl}/login`, credentials).pipe(
       tap(response => {
         if (response && response.token) {
           this.storeToken(response.token);
@@ -22,7 +24,7 @@ export class AuthService {
   }
 
   register(userData: any): Observable<any> {
-    return this.http.post<any>('YOUR_API_REGISTER_URL', userData).pipe(
+    return this.http.post<any>(`${this.baseUrl}/register`, userData).pipe(
       tap(response => {
         if (response && response.token) {
           this.storeToken(response.token);
