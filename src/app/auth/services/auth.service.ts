@@ -9,15 +9,16 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   private tokenKey = 'authToken';
 
-   private baseUrl = 'http://localhost:3001/api/auth'; 
+  private baseUrl = 'http://localhost:3001/api/auth';
 
   constructor(private http: HttpClient) { }
 
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, credentials).pipe(
       tap(response => {
-        if (response && response.token) {
-          this.storeToken(response.token);
+        // console.log(response);
+        if (response && response.access_token) {
+          this.storeToken(response.access_token);
         }
       })
     );
@@ -26,8 +27,8 @@ export class AuthService {
   register(userData: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/register`, userData).pipe(
       tap(response => {
-        if (response && response.token) {
-          this.storeToken(response.token);
+        if (response && response.access_token) {
+          this.storeToken(response.access_token);
         }
       })
     );
@@ -39,7 +40,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
-    return !!token; 
+    return !!token;
   }
 
   public getToken(): string | null {
