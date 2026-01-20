@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { Login } from './pages/login/login';
-import { AuthGuard } from '../auth.guard';
+import { Register } from './pages/register/register';
 
 export const AUTH_ROUTES: Routes = [
-  { path: '', component: Login, canActivate: [AuthGuard]},
+  { path: 'login', component: Login},
+  { path: 'register', component: Register}
 ];
