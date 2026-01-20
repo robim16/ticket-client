@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Ticket } from "../components/ticket-item/ticket-item";
 import { catchError } from 'rxjs';
@@ -9,7 +9,7 @@ export class TicketsService {
 
   private baseUrl = 'http://localhost:3001/api/tickets'; 
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   create(ticket: { description: string }) {
     return this.http.post(`${this.baseUrl}`, ticket).pipe(
